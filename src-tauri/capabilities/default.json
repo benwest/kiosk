@@ -3,7 +3,15 @@
   "identifier": "default",
   "description": "Capability for the kiosk and config windows",
   "windows": ["main", "config"],
+  "remote": {
+    "urls": ["http://127.0.0.1:*"]
+  },
   "permissions": [
-    "core:default"
+    "core:default",
+    "allow-get-config",
+    "allow-save-config",
+    "allow-toggle-config",
+    "allow-quit-app",
+    "allow-pick-folder"
   ]
 }

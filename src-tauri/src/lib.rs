@@ -13,10 +13,15 @@ const MAIN_INIT_SCRIPT: &str = r#"
   window.addEventListener(
     "keydown",
     function (e) {
-      if (e.metaKey && e.altKey && e.shiftKey && (e.key === "c" || e.key === "C")) {
+      // e.key is the composed character (Option+Shift+C types "Ç" on macOS,
+      // not "c"), so check the physical key via e.code instead.
+      if (e.metaKey && e.altKey && e.shiftKey && e.code === "KeyC") {
         e.preventDefault();
-        if (window.__TAURI__ && window.__TAURI__.core) {
-          window.__TAURI__.core.invoke("toggle_config");
+        // window.__TAURI__ (the withGlobalTauri wrapper) isn't reliably present on
+        // externally-loaded content; __TAURI_INTERNALS__ is the underlying IPC
+        // bridge every Tauri webview gets regardless of origin.
+        if (window.__TAURI_INTERNALS__) {
+          window.__TAURI_INTERNALS__.invoke("toggle_config");
         }
       }
     },
