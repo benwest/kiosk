@@ -1,0 +1,85 @@
+:root {
+  font-family: -apple-system, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #0f0f0f;
+  background-color: #f6f6f6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 1.5em;
+}
+
+h1 {
+  font-size: 1.2em;
+  margin: 0 0 1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  font-weight: 500;
+}
+
+input,
+button {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 0.5em 0.7em;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+.row {
+  display: flex;
+  gap: 0.6em;
+}
+
+.row input {
+  flex: 1;
+  min-width: 0;
+}
+
+button {
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+button[type="submit"] {
+  flex: 1;
+  background-color: #396cd8;
+  color: #fff;
+  border-color: #396cd8;
+}
+
+button.quit {
+  color: #c0392b;
+}
+
+#status {
+  min-height: 1.2em;
+  color: #c0392b;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #f6f6f6;
+    background-color: #2f2f2f;
+  }
+
+  input,
+  button {
+    color: #ffffff;
+    background-color: #0f0f0f98;
+    border-color: #444;
+  }
+}

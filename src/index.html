@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiosk Config</title>
+  </head>
+  <body>
+    <main>
+      <h1>Kiosk Config</h1>
+      <form id="config-form">
+        <label>
+          Content folder path
+          <div class="row">
+            <input id="content-path" type="text" placeholder="/path/to/site" readonly required />
+            <button type="button" id="browse-btn">Browse…</button>
+          </div>
+        </label>
+        <label>
+          Port
+          <input id="port" type="number" placeholder="8973" min="1" max="65535" />
+        </label>
+        <div class="row">
+          <button type="submit">Save</button>
+          <button type="button" id="quit-btn" class="quit">Quit</button>
+        </div>
+        <p id="status"></p>
+      </form>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
