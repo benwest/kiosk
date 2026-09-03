@@ -14,14 +14,12 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
-      - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
 
-      - run: pnpm install
+      - run: npm ci
 
       - uses: tauri-apps/tauri-action@v0
         env:
