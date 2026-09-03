@@ -142,8 +142,13 @@ fn save_config(
 #[tauri::command]
 fn toggle_config(app: AppHandle) {
     if let Some(win) = app.get_webview_window("config") {
-        let visible = win.is_visible().unwrap_or(false);
-        if visible {
+        // is_visible() is true even when the window is buried behind the
+        // always-on-top main window (same floating level, lost z-order) - it
+        // only means "on screen", not "on top". Keying off focus instead makes
+        // the hotkey self-correcting: it always either raises the window or
+        // dismisses it, never leaves it stuck visible-but-hidden-behind-main.
+        let focused = win.is_focused().unwrap_or(false);
+        if focused {
             win.hide().ok();
         } else {
             win.show().ok();
