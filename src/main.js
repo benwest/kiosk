@@ -31,6 +31,10 @@ document.querySelector("#quit-btn").addEventListener("click", () => {
   invoke("quit_app");
 });
 
+document.querySelector("#reload-btn").addEventListener("click", () => {
+  invoke("reload_main");
+});
+
 document.querySelector("#browse-btn").addEventListener("click", async () => {
   const folder = await invoke("pick_folder");
   if (folder) {

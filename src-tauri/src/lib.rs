@@ -158,6 +158,13 @@ fn quit_app(app: AppHandle) {
     app.exit(0);
 }
 
+#[tauri::command]
+fn reload_main(app: AppHandle) {
+    if let Some(win) = app.get_webview_window("main") {
+        win.eval("location.reload()").ok();
+    }
+}
+
 // Must not block the calling thread: on macOS the picker's own modal loop
 // runs on the main thread, so `blocking_pick_folder` there deadlocks the UI.
 #[tauri::command]
@@ -196,7 +203,8 @@ pub fn run() {
             save_config,
             toggle_config,
             quit_app,
-            pick_folder
+            pick_folder,
+            reload_main
         ])
         .setup(|app| {
             let handle = app.handle().clone();

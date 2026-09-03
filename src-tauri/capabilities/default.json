@@ -12,6 +12,7 @@
     "allow-save-config",
     "allow-toggle-config",
     "allow-quit-app",
-    "allow-pick-folder"
+    "allow-pick-folder",
+    "allow-reload-main"
   ]
 }

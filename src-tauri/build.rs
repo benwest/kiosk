@@ -6,6 +6,7 @@ fn main() {
             "toggle_config",
             "quit_app",
             "pick_folder",
+            "reload_main",
         ]),
     );
     tauri_build::try_build(attributes).expect("failed to run tauri-build");
